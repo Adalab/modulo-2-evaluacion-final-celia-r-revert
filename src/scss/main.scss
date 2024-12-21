@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.spotlight__main {
+  display: flex;
+  justify-content: center;
+}
+
+.spotlight__form {
+  margin: 10px;
+  width: 150vw;
+  border: solid 3px grey;
+}
+
+.spotlight__searchBtn {
+  background-color: blueviolet;
+  color: white;
+}
+
+.spotlight__list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.spotlight__footer {
+  text-align: center;
+}
