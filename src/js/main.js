@@ -1,11 +1,12 @@
 "use strict";
 
-//Generar personajes
-
-//Constantes y variables
 
 const DisneyList = document.querySelector(".js__DisneyList");
-const AllDisneyCharacters = [
+
+//Generar personajes
+
+// array de todos los personajes (hasta línea 975)
+let AllDisneyCharacters = [
   {
     _id: 112,
     films: ["Hercules (film)"],
@@ -972,9 +973,9 @@ const AllDisneyCharacters = [
     url: "https://api.disneyapi.dev/characters/351",
     __v: 0,
   },
-  console.log('imageUrl')
 ];
 
+//Constante un personaje 
 
 const DisneyCharacterObj = {
   _id: 112,
@@ -995,20 +996,56 @@ const DisneyCharacterObj = {
   __v: 0,
 };
 
-///Funciones
+//Botón de búsqueda y filtro por nombres
+
+const searchInput = document.querySelector('.js_searchInput');
+const searchBtn = document.querySelector('.js_searchBtn');
+
+const handlesearchInput = (ev) => {
+  const searchedDisneyCharacters = 
+}
+
+//Seleccionar personaje favorito
+
+const handleFavourite = (ev) => {
+  ev.currentTarget.classList.toggle('favourite');
+};
+
 const renderOneDisneyCharacter = (DisneyCharacterObj) => {
-  DisneyList.innerHTML += `
+  const html = `
     <li class = "DisneyItem">
         <h3>${DisneyCharacterObj.name}</h3>
         <div class = "DisneyCharacterCard">
             <img src = "${DisneyCharacterObj.imageUrl}" alt="${DisneyCharacterObj.name}">
         </div>
     </li>`;
+
+  return html; 
+
 };
 
-for ( const DisneyCharacterObj of AllDisneyCharacters) {
-    renderOneDisneyCharacter (DisneyCharacterObj);
+const renderAllDisneyCharacters = () => {
+  let html = ''; 
+  for ( const DisneyCharacterObj of AllDisneyCharacters) {
+    html += renderOneDisneyCharacter (DisneyCharacterObj);
+  }
+  DisneyList.innerHTML = html;
+  const AllDisneyCharacterLi = document.querySelectorAll('.DisneyItem')
+  for(const li of AllDisneyCharacterLi ) {
+    li.addEventListener('click',handleFavourite);
+  };
 }
 
+renderAllDisneyCharacters ();
+  
+//Fetch
 
-console.log(">> Ready :)");
+fetch('https://api.disneyapi.dev/character?')
+  .then((response) => response.json())
+  .then((data) => {
+    AllDisneyCharacters = data.data;
+
+    renderAllDisneyCharacters();
+  });
+
+
