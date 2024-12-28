@@ -1001,9 +1001,8 @@ const DisneyCharacterObj = {
 const searchInput = document.querySelector('.js_searchInput');
 const searchBtn = document.querySelector('.js_searchBtn');
 
-const handlesearchInput = (ev) => {
-  const searchedDisneyCharacters = 
-}
+
+
 
 //Seleccionar personaje favorito
 
@@ -1014,9 +1013,9 @@ const handleFavourite = (ev) => {
 const renderOneDisneyCharacter = (DisneyCharacterObj) => {
   const html = `
     <li class = "DisneyItem">
-        <h3>${DisneyCharacterObj.name}</h3>
+        <h3 class = "DisneyItemTitle">${DisneyCharacterObj.name}</h3>
         <div class = "DisneyCharacterCard">
-            <img src = "${DisneyCharacterObj.imageUrl}" alt="${DisneyCharacterObj.name}">
+            <img class = "DisneyImg" src = "${DisneyCharacterObj.imageUrl}" alt="${DisneyCharacterObj.name}">
         </div>
     </li>`;
 
